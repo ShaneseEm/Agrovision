@@ -8,38 +8,37 @@ export const metadata: Metadata = {
   description: "Meet the AgroVision E-Lab think tank.",
 };
 
-// TODO: replace placeholder name/role/bio for each member, and drop a matching
-// photo into public/images/team/ using the file name listed in `photo`.
+// TODO: fill in real bios for each member.
 const teamMembers = [
   {
-    name: "Team Member 1",
-    role: "Role / Title",
+    name: "Angel Akeen",
+    role: "Leader",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/member-1.jpg",
+    photo: "/images/team/Angel.jpeg",
   },
   {
-    name: "Team Member 2",
-    role: "Role / Title",
+    name: "Bethelhem",
+    role: "Web Developer",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/member-2.jpg",
+    photo: "/images/team/Bethelhem.jpg",
   },
   {
-    name: "Team Member 3",
-    role: "Role / Title",
+    name: "Ryan",
+    role: "Secretary",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/member-3.jpg",
+    photo: "/images/team/Ryan.jpeg",
   },
   {
-    name: "Team Member 4",
-    role: "Role / Title",
+    name: "Jess",
+    role: "Video Editor",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/member-4.jpg",
+    photo: "/images/team/Jess.jpeg",
   },
   {
-    name: "Team Member 5",
-    role: "Role / Title",
+    name: "Lael",
+    role: "Researcher",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/member-5.jpg",
+    photo: "/images/team/Lael.jpeg",
   },
 ];
 
