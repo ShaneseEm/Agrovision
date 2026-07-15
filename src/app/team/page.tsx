@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: "Meet the AgroVision E-Lab think tank.",
 };
 
-// TODO: fill in real bios for each member.
+// TODO: fill in Ryan and Jess's bios.
 const teamMembers = [
   {
-    name: "Angel Akeen",
+    name: "Akeen Anger Kuc",
     role: "Leader",
-    bio: "Short bio goes here — background, what they contributed to the think tank.",
+    bio: "Fun fact: I love turning big community problems into business solutions! 😊",
     photo: "/images/team/Angel.jpeg",
   },
   {
@@ -23,9 +23,9 @@ const teamMembers = [
     photo: "/images/team/Ryan.jpeg",
   },
   {
-    name: "Bethelhem",
+    name: "Bethelhem Alemayehu Ejigu",
     role: "Developer",
-    bio: "Short bio goes here — background, what they contributed to the think tank.",
+    bio: "Fun fact: My favorite hobby is professional sleeping. 😴",
     photo: "/images/team/Bethelhem.jpg",
   },
   {
@@ -35,9 +35,9 @@ const teamMembers = [
     photo: "/images/team/Jess.jpeg",
   },
   {
-    name: "Lael",
+    name: "Birasa Ian Lael",
     role: "Researcher",
-    bio: "Short bio goes here — background, what they contributed to the think tank.",
+    bio: "Fun fact: I can play 3 different instruments. 😭",
     photo: "/images/team/Lael.jpeg",
   },
 ];
