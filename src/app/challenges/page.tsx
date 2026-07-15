@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ImageWithFallback from "@/components/ImageWithFallback";
 import Reveal from "@/components/Reveal";
 import WaveDivider from "@/components/WaveDivider";
 
@@ -99,12 +98,15 @@ export default function ChallengesPage() {
 
           <Reveal delay={videoChallenges.length * 100}>
             <div className="group h-full overflow-hidden rounded-2xl border border-amber-400/40 bg-amber-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-900/10 dark:border-amber-400/30 dark:bg-green-950/40">
-              <ImageWithFallback
-                src="/images/challenges/digital-print-cover.jpg"
-                alt="AgroVision Digital Print cover"
-                label="Optional cover image for Challenge 6 (public/images/challenges/digital-print-cover.jpg)"
-                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              <div className="bg-dot-grid relative aspect-video w-full overflow-hidden bg-linear-to-br from-green-800 via-green-700 to-amber-600 text-white/15 transition-transform duration-500 group-hover:scale-105">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
+                  <span className="text-5xl">🌿</span>
+                  <p className="font-display text-2xl font-semibold text-white">AgroVision</p>
+                  <p className="text-sm font-medium uppercase tracking-wide text-amber-200">
+                    Digital Print &middot; Challenge 6
+                  </p>
+                </div>
+              </div>
               <div className="p-6">
                 <h3 className="font-semibold text-green-900 dark:text-green-50">
                   Challenge 6: Digital Print
