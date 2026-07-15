@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import Reveal from "@/components/Reveal";
+import WaveDivider from "@/components/WaveDivider";
 
 export const metadata: Metadata = {
   title: "E-LAB Challenges | AgroVision",
@@ -43,66 +46,84 @@ const videoChallenges = [
 export default function ChallengesPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-green-900 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
-            Innovation and Business Track (IBT) &middot; E-Lab
-          </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight">
-            The Six E-LAB Challenges
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg text-green-100">
-            Every AgroVision think tank member documented our journey through all six
-            E-LAB challenges &mdash; from discovery to this digital print.
-          </p>
+      <section className="relative overflow-hidden bg-green-900 text-white">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="blob absolute -left-10 bottom-0 h-72 w-72 rounded-full bg-lime-300/15 blur-3xl" />
         </div>
+        <div className="relative mx-auto max-w-6xl px-6 py-16">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
+              Innovation and Business Track (IBT) &middot; E-Lab
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+              The Six E-LAB Challenges
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mt-6 max-w-3xl text-lg text-green-100">
+              Every AgroVision think tank member documented our journey through all six
+              E-LAB challenges &mdash; from discovery to this digital print.
+            </p>
+          </Reveal>
+        </div>
+        <WaveDivider />
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          {videoChallenges.map((challenge) => (
-            <div
-              key={challenge.number}
-              className="overflow-hidden rounded-2xl border border-green-900/10 bg-white shadow-sm dark:border-green-100/10 dark:bg-green-950/40"
-            >
-              <div className="aspect-video w-full">
-                <iframe
-                  className="h-full w-full"
-                  src={`https://www.youtube.com/embed/${challenge.youtubeId}`}
-                  title={challenge.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+          {videoChallenges.map((challenge, i) => (
+            <Reveal key={challenge.number} delay={i * 100}>
+              <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="h-full w-full"
+                    src={`https://www.youtube.com/embed/${challenge.youtubeId}`}
+                    title={challenge.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-semibold text-green-900 group-hover:text-amber-600 dark:text-green-50 dark:group-hover:text-amber-400">
+                    {challenge.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
+                    {challenge.description}
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-green-900 dark:text-green-50">
-                  {challenge.title}
-                </h3>
-                <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
-                  {challenge.description}
-                </p>
-              </div>
-            </div>
+            </Reveal>
           ))}
 
-          <div className="overflow-hidden rounded-2xl border border-amber-400/40 bg-amber-50 shadow-sm dark:border-amber-400/30 dark:bg-green-950/40">
-            <ImageWithFallback
-              src="/images/challenges/digital-print-cover.jpg"
-              alt="AgroVision Digital Print cover"
-              label="Optional cover image for Challenge 6 (public/images/challenges/digital-print-cover.jpg)"
-              className="aspect-video w-full object-cover"
-            />
-            <div className="p-6">
-              <h3 className="font-semibold text-green-900 dark:text-green-50">
-                Challenge 6: Digital Print
-              </h3>
-              <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
-                This website is Challenge 6. It brings together our mission, problem
-                statement, solution, prototype, and think tank team in one place &mdash;
-                documenting our full E-LAB journey.
-              </p>
+          <Reveal delay={videoChallenges.length * 100}>
+            <div className="group h-full overflow-hidden rounded-2xl border border-amber-400/40 bg-amber-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-900/10 dark:border-amber-400/30 dark:bg-green-950/40">
+              <ImageWithFallback
+                src="/images/challenges/digital-print-cover.jpg"
+                alt="AgroVision Digital Print cover"
+                label="Optional cover image for Challenge 6 (public/images/challenges/digital-print-cover.jpg)"
+                className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="p-6">
+                <h3 className="font-semibold text-green-900 dark:text-green-50">
+                  Challenge 6: Digital Print
+                </h3>
+                <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
+                  This website is Challenge 6. It brings together our mission, problem
+                  statement, solution, prototype, and think tank team in one place &mdash;
+                  documenting our full E-LAB journey.
+                </p>
+                <Link
+                  href="/"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 dark:text-amber-400"
+                >
+                  You&apos;re already here &mdash; explore the site
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

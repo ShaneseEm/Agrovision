@@ -1,10 +1,14 @@
 import Link from "next/link";
 import ImageWithFallback from "@/components/ImageWithFallback";
+import Reveal from "@/components/Reveal";
+import WaveDivider from "@/components/WaveDivider";
+import FloatingGardenScene from "@/components/FloatingGardenScene";
+import TiltCard from "@/components/TiltCard";
 
 const stats = [
-  { value: "90,000+", label: "People displaced by flooding in Upper Nile State over 3 years" },
-  { value: "7.1M", label: "People facing acute food insecurity nationwide (2023 lean season)" },
-  { value: "80%", label: "Of South Sudan's population relies on farming and livestock" },
+  { value: "90,000+", label: "People displaced by flooding in Upper Nile State over 3 years", icon: "🌊" },
+  { value: "7.1M", label: "People facing acute food insecurity nationwide (2023 lean season)", icon: "🍽️" },
+  { value: "80%", label: "Of South Sudan's population relies on farming and livestock", icon: "🌾" },
 ];
 
 const quickLinks = [
@@ -13,80 +17,122 @@ const quickLinks = [
     title: "The Problem",
     description:
       "Climate-driven flooding in Upper Nile State is destroying farmland and deepening food insecurity.",
+    icon: "⚠️",
   },
   {
     href: "/solution",
     title: "Our Solution",
     description:
       "Floating gardens: a flood-resilient farming method built from locally available materials.",
+    icon: "🌿",
   },
   {
     href: "/team",
     title: "The Team",
     description: "Meet the AgroVision think tank behind the research and the solution.",
+    icon: "🤝",
   },
   {
     href: "/challenges",
     title: "E-LAB Challenges",
     description: "Follow our journey through all six E-LAB Think Tank challenges.",
+    icon: "🏆",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <section className="bg-linear-to-b from-green-900 to-green-800 text-white">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-24">
-          <p className="rounded-full bg-amber-400/20 px-4 py-1 text-sm font-semibold text-amber-300">
-            African Leadership University &middot; E-Lab Think Tank
-          </p>
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
-            Growing food security in South Sudan, one floating garden at a time.
-          </h1>
-          <p className="max-w-2xl text-lg text-green-100">
-            AgroVision&apos;s mission is to support farmers with sustainable farming
-            solutions, modern technology, and market access to improve food security,
-            increase productivity, and strengthen communities.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-2">
-            <Link
-              href="/solution"
-              className="rounded-full bg-amber-400 px-6 py-3 font-semibold text-green-950 transition-colors hover:bg-amber-300"
-            >
-              See Our Solution
-            </Link>
-            <Link
-              href="/problem"
-              className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              Learn About the Problem
-            </Link>
-          </div>
+    <div className="flex flex-col overflow-hidden">
+      <section className="relative bg-linear-to-b from-green-900 via-green-900 to-green-800 text-white">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="blob absolute -left-20 -top-20 h-96 w-96 rounded-full bg-amber-400/20 blur-3xl" />
+          <div
+            className="blob absolute -right-10 top-1/3 h-80 w-80 rounded-full bg-emerald-400/20 blur-3xl"
+            style={{ animationDelay: "3s" }}
+          />
+          <div
+            className="blob absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-lime-300/10 blur-3xl"
+            style={{ animationDelay: "6s" }}
+          />
         </div>
+
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 py-24 sm:py-32 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col items-start gap-6">
+            <Reveal>
+              <p className="rounded-full bg-amber-400/20 px-4 py-1 text-sm font-semibold text-amber-300 ring-1 ring-amber-300/30">
+                African Leadership University &middot; E-Lab Think Tank
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+                Growing <span className="text-shimmer">food security</span> in South Sudan,
+                one floating garden at a time.
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="max-w-2xl text-lg text-green-100">
+                AgroVision&apos;s mission is to support farmers with sustainable farming
+                solutions, modern technology, and market access to improve food security,
+                increase productivity, and strengthen communities.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <Link
+                  href="/solution"
+                  className="group rounded-full bg-amber-400 px-6 py-3 font-semibold text-green-950 shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-500/30"
+                >
+                  See Our Solution
+                  <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+                <Link
+                  href="/problem"
+                  className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
+                >
+                  Learn About the Problem
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={250} className="hidden lg:block">
+            <FloatingGardenScene />
+          </Reveal>
+        </div>
+        <WaveDivider />
       </section>
 
       <section className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 px-6 py-16 sm:grid-cols-3">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm dark:border-green-100/10 dark:bg-green-950/40"
-          >
-            <p className="text-3xl font-bold text-green-800 dark:text-amber-400">{stat.value}</p>
-            <p className="mt-2 text-sm text-green-900/80 dark:text-green-100/70">{stat.label}</p>
-          </div>
+        {stats.map((stat, i) => (
+          <Reveal key={stat.label} delay={i * 120}>
+            <TiltCard>
+              <div className="group h-full rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-900/5 text-2xl transition-transform group-hover:scale-110 dark:bg-amber-400/10">
+                  {stat.icon}
+                </span>
+                <p className="mt-4 font-display text-3xl font-semibold text-green-800 transition-colors dark:text-amber-400">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-sm text-green-900/80 dark:text-green-100/70">{stat.label}</p>
+              </div>
+            </TiltCard>
+          </Reveal>
         ))}
       </section>
 
       <section className="bg-amber-50 dark:bg-green-950/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-            <ImageWithFallback
-              src="/images/team/group-photo.jpg"
-              alt="The AgroVision think tank team"
-              label="Add the team group photo here (public/images/team/group-photo.jpg)"
-              className="aspect-video w-full rounded-2xl object-cover shadow-md"
-            />
-            <div>
+            <Reveal>
+              <ImageWithFallback
+                src="/images/team/group-photo.jpg"
+                alt="The AgroVision think tank team"
+                label="Add the team group photo here (public/images/team/group-photo.jpg)"
+                className="aspect-video w-full rounded-2xl object-cover shadow-lg transition-transform duration-500 hover:scale-[1.02]"
+              />
+            </Reveal>
+            <Reveal delay={150}>
               <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">
                 A community-based solution
               </h2>
@@ -99,29 +145,38 @@ export default function Home() {
               </p>
               <Link
                 href="/team"
-                className="mt-6 inline-block font-semibold text-green-800 underline decoration-amber-400 decoration-2 underline-offset-4 dark:text-amber-400"
+                className="group mt-6 inline-flex items-center gap-1 font-semibold text-green-800 underline decoration-amber-400 decoration-2 underline-offset-4 dark:text-amber-400"
               >
-                Meet the team →
+                Meet the team
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Explore the Digital Print</h2>
+        <Reveal>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Explore the Digital Print</h2>
+        </Reveal>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {quickLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="group rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm transition-shadow hover:shadow-lg dark:border-green-100/10 dark:bg-green-950/40"
-            >
-              <h3 className="text-lg font-semibold text-green-900 group-hover:text-amber-600 dark:text-green-50 dark:group-hover:text-amber-400">
-                {link.title}
-              </h3>
-              <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{link.description}</p>
-            </Link>
+          {quickLinks.map((link, i) => (
+            <Reveal key={link.href} delay={i * 100}>
+              <TiltCard>
+                <Link
+                  href={link.href}
+                  className="group block h-full rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/50 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-900/5 text-2xl transition-transform group-hover:scale-110 group-hover:bg-amber-400/10 dark:bg-amber-400/10">
+                    {link.icon}
+                  </span>
+                  <h3 className="mt-3 text-lg font-semibold text-green-900 group-hover:text-amber-600 dark:text-green-50 dark:group-hover:text-amber-400">
+                    {link.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{link.description}</p>
+                </Link>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
       </section>

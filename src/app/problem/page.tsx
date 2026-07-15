@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
+import WaveDivider from "@/components/WaveDivider";
 
 export const metadata: Metadata = {
   title: "The Problem | AgroVision",
@@ -93,79 +95,95 @@ const pestle: { letter: string; title: string; points: string[] }[] = [
 export default function ProblemPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-green-900 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
-            Grand Challenge: Agriculture &amp; Food Security &middot; South Sudan
-          </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight">The Problem</h1>
-          <p className="mt-6 max-w-3xl text-lg text-green-100">
-            According to the United Nations, climate change has intensified flooding in
-            South Sudan&apos;s Upper Nile State, displacing more than 90,000 people over the
-            past three years. The recurrent floods have damaged agricultural land,
-            disrupted food production, and limited access to food, contributing to rising
-            levels of food insecurity and malnutrition, particularly among women and
-            children.
-          </p>
+      <section className="relative overflow-hidden bg-green-900 text-white">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="blob absolute -right-24 -top-24 h-96 w-96 rounded-full bg-red-400/10 blur-3xl" />
         </div>
+        <div className="relative mx-auto max-w-6xl px-6 py-16">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
+              Grand Challenge: Agriculture &amp; Food Security &middot; South Sudan
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+              The Problem
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mt-6 max-w-3xl text-lg text-green-100">
+              According to the United Nations, climate change has intensified flooding in
+              South Sudan&apos;s Upper Nile State, displacing more than 90,000 people over the
+              past three years. The recurrent floods have damaged agricultural land,
+              disrupted food production, and limited access to food, contributing to rising
+              levels of food insecurity and malnutrition, particularly among women and
+              children.
+            </p>
+          </Reveal>
+        </div>
+        <WaveDivider />
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Problem Statement</h2>
-        <p className="mt-4 text-green-900/80 dark:text-green-100/80">
-          Smallholder farmers in rural areas &mdash; especially in Central Equatoria,
-          Jonglei, Unity, and Western Bahr el Ghazal &mdash; struggle to grow enough food to
-          feed their families, let alone make a profit. This is driven by a harsh mix of
-          poor infrastructure, scarce farming inputs, the lingering impacts of war, and
-          worsening climate shocks. Despite ongoing interventions, many farmers lack
-          access to climate-resilient agricultural practices that could help them adapt to
-          recurring floods and sustain food production. This challenge threatens
-          livelihoods, community resilience, and long-term food security.
-        </p>
+        <Reveal>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Problem Statement</h2>
+          <p className="mt-4 text-green-900/80 dark:text-green-100/80">
+            Smallholder farmers in rural areas &mdash; especially in Central Equatoria,
+            Jonglei, Unity, and Western Bahr el Ghazal &mdash; struggle to grow enough food to
+            feed their families, let alone make a profit. This is driven by a harsh mix of
+            poor infrastructure, scarce farming inputs, the lingering impacts of war, and
+            worsening climate shocks. Despite ongoing interventions, many farmers lack
+            access to climate-resilient agricultural practices that could help them adapt to
+            recurring floods and sustain food production. This challenge threatens
+            livelihoods, community resilience, and long-term food security.
+          </p>
+        </Reveal>
       </section>
 
       <section className="bg-amber-50 dark:bg-green-950/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Who Is Affected?</h2>
+          <Reveal>
+            <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Who Is Affected?</h2>
+          </Reveal>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {affectedGroups.map((group) => (
-              <div
-                key={group.name}
-                className="rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm dark:border-green-100/10 dark:bg-green-950/40"
-              >
-                <h3 className="font-semibold text-green-900 dark:text-green-50">{group.name}</h3>
-                <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{group.detail}</p>
-              </div>
+            {affectedGroups.map((group, i) => (
+              <Reveal key={group.name} delay={i * 80}>
+                <div className="h-full rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                  <h3 className="font-semibold text-green-900 dark:text-green-50">{group.name}</h3>
+                  <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{group.detail}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">PESTLE Analysis</h2>
-        <p className="mt-4 max-w-3xl text-green-900/70 dark:text-green-100/70">
-          A breakdown of the external macro-environmental factors shaping agriculture in
-          South Sudan &mdash; essential for designing interventions that can survive and
-          scale in this context.
-        </p>
+        <Reveal>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">PESTLE Analysis</h2>
+          <p className="mt-4 max-w-3xl text-green-900/70 dark:text-green-100/70">
+            A breakdown of the external macro-environmental factors shaping agriculture in
+            South Sudan &mdash; essential for designing interventions that can survive and
+            scale in this context.
+          </p>
+        </Reveal>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pestle.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm dark:border-green-100/10 dark:bg-green-950/40"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-800 font-bold text-white dark:bg-amber-400 dark:text-green-950">
-                  {item.letter}
-                </span>
-                <h3 className="font-semibold text-green-900 dark:text-green-50">{item.title}</h3>
+          {pestle.map((item, i) => (
+            <Reveal key={item.title} delay={i * 80}>
+              <div className="h-full rounded-2xl border border-green-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-800 font-bold text-white dark:bg-amber-400 dark:text-green-950">
+                    {item.letter}
+                  </span>
+                  <h3 className="font-semibold text-green-900 dark:text-green-50">{item.title}</h3>
+                </div>
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-green-900/70 dark:text-green-100/70">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-green-900/70 dark:text-green-100/70">
-                {item.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
