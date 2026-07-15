@@ -17,16 +17,16 @@ const teamMembers = [
     photo: "/images/team/Angel.jpeg",
   },
   {
-    name: "Bethelhem",
-    role: "Web Developer",
-    bio: "Short bio goes here — background, what they contributed to the think tank.",
-    photo: "/images/team/Bethelhem.jpg",
-  },
-  {
     name: "Ryan",
     role: "Secretary",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
     photo: "/images/team/Ryan.jpeg",
+  },
+  {
+    name: "Bethelhem",
+    role: "Developer",
+    bio: "Short bio goes here — background, what they contributed to the think tank.",
+    photo: "/images/team/Bethelhem.jpg",
   },
   {
     name: "Jess",
@@ -80,9 +80,13 @@ export default function TeamPage() {
           />
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 flex flex-wrap justify-center gap-8">
           {teamMembers.map((member, i) => (
-            <Reveal key={member.name} delay={i * 100}>
+            <Reveal
+              key={member.name}
+              delay={i * 100}
+              className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+            >
               <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
                 <div className="overflow-hidden">
                   <ImageWithFallback
