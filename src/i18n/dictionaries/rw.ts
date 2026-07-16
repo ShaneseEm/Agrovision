@@ -233,9 +233,9 @@ const dict: Dictionary = {
     intro: "Abantu bari inyuma y'ubushakashatsi, gushyiraho ikibazo, n'igisubizo cy'imirima igendera ku mazi.",
     members: [
       { role: "Umuyobozi", bio: "Ikintu gishimishije: Nkunda guhindura ibibazo binini by'umuryango mo ibisubizo by'ubucuruzi! 😊" },
-      { role: "Umunyamabanga", bio: "Amateka magufi azashyirwa hano — inkomoko, icyo yatanze mu itsinda ry'ubushakashatsi." },
+      { role: "Umunyamabanga", bio: "Ikintu gishimishije: Umunsi wanjye ntabwo urangira neza nitarabona nibura filime ebyiri — ndakunda amashusho cyane. 😭" },
       { role: "Umukoresha porogaramu", bio: "Ikintu gishimishije: Ibyo nkunda gukora mu gihe cy'ubusa ni ugusinzira ku rwego rw'umwuga. 😴" },
-      { role: "Umutunganya video", bio: "Amateka magufi azashyirwa hano — inkomoko, icyo yatanze mu itsinda ry'ubushakashatsi." },
+      { role: "Umutunganya video", bio: "Ikintu gishimishije: Nkunda kugerageza ibintu bishya — igihe abantu banyizeye kandi mfite ubutwari, nshobora gukora ibintu bikomeye." },
       { role: "Umushakashatsi", bio: "Ikintu gishimishije: Nshobora gukina ibikoresho by'umuziki bitatu bitandukanye. 😭" },
     ],
   },

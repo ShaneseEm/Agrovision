@@ -10,7 +10,6 @@ import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ lang: string }> };
 
-// TODO: fill in Ryan and Jess's bios.
 const teamMembers = [
   {
     name: "Akeen Anger Kuc",

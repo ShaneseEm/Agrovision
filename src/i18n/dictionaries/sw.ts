@@ -231,9 +231,9 @@ const dict: Dictionary = {
     intro: "Watu walio nyuma ya utafiti, uundaji wa tatizo, na suluhisho la bustani zinazoelea.",
     members: [
       { role: "Kiongozi", bio: "Jambo la kufurahisha: Ninapenda kubadilisha matatizo makubwa ya jamii kuwa suluhisho za kibiashara! 😊" },
-      { role: "Katibu", bio: "Wasifu mfupi utaongezwa hapa — historia, mchango wake katika timu ya utafiti." },
+      { role: "Katibu", bio: "Jambo la kufurahisha: Siku yangu haikamiliki bila kutazama angalau filamu 2 — mimi ni mraibu wa filamu wa kweli. 😭" },
       { role: "Msanidi Programu", bio: "Jambo la kufurahisha: Hobi yangu ninayopenda zaidi ni kulala kitaalamu. 😴" },
-      { role: "Mhariri wa Video", bio: "Wasifu mfupi utaongezwa hapa — historia, mchango wake katika timu ya utafiti." },
+      { role: "Mhariri wa Video", bio: "Jambo la kufurahisha: Ninapenda kujaribu mambo mapya — watu wakiniamini na nikiwa na ujasiri, ninaweza kufanya mambo makubwa." },
       { role: "Mtafiti", bio: "Jambo la kufurahisha: Ninaweza kupiga ala tatu tofauti za muziki. 😭" },
     ],
   },

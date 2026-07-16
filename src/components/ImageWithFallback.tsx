@@ -18,7 +18,7 @@ export default function ImageWithFallback({
   if (failed) {
     return (
       <div
-        className={`flex items-center justify-center border-2 border-dashed border-green-900/30 bg-green-900/5 p-4 text-center text-sm text-green-900/60 dark:border-green-100/20 dark:bg-green-100/5 dark:text-green-100/50 ${className}`}
+        className={`flex items-center justify-center border-2 border-dashed border-green-900/30 bg-white p-4 text-center text-sm text-green-900/60 dark:border-green-100/20 dark:bg-green-100/5 dark:text-green-100/50 ${className}`}
         role="img"
         aria-label={alt}
       >

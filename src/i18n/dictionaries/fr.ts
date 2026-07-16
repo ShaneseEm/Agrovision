@@ -239,9 +239,9 @@ const dict: Dictionary = {
       "Les personnes derrière la recherche, la définition du problème et la solution des jardins flottants.",
     members: [
       { role: "Leader", bio: "Anecdote : J'adore transformer de grands problèmes communautaires en solutions d'affaires ! 😊" },
-      { role: "Secrétaire", bio: "Courte biographie à venir — parcours, contribution au think tank." },
+      { role: "Secrétaire", bio: "Anecdote : Ma journée n'est jamais complète sans au moins 2 films — je suis un vrai cinéphile accro. 😭" },
       { role: "Développeuse", bio: "Anecdote : Mon passe-temps préféré est de dormir professionnellement. 😴" },
-      { role: "Monteur Vidéo", bio: "Courte biographie à venir — parcours, contribution au think tank." },
+      { role: "Monteur Vidéo", bio: "Anecdote : J'aime essayer de nouvelles choses — quand on me fait confiance et que j'ai le courage, je peux accomplir de grandes choses." },
       { role: "Chercheur", bio: "Anecdote : Je sais jouer de 3 instruments différents. 😭" },
     ],
   },

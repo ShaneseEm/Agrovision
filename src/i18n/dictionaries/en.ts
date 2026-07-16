@@ -237,9 +237,9 @@ const dict: Dictionary = {
     intro: "The people behind the research, the problem framing, and the floating gardens solution.",
     members: [
       { role: "Leader", bio: "Fun fact: I love turning big community problems into business solutions! 😊" },
-      { role: "Secretary", bio: "Short bio goes here — background, what they contributed to the think tank." },
+      { role: "Secretary", bio: "Fun fact: My days aren't complete without at least 2 movies — I'm a certified movie addict. 😭" },
       { role: "Developer", bio: "Fun fact: My favorite hobby is professional sleeping. 😴" },
-      { role: "Video Editor", bio: "Short bio goes here — background, what they contributed to the think tank." },
+      { role: "Video Editor", bio: "Fun fact: I like trying new things — when people trust me and I have the courage, I can do great things." },
       { role: "Researcher", bio: "Fun fact: I can play 3 different instruments. 😭" },
     ],
   },
