@@ -239,11 +239,11 @@ const dict: Dictionary = {
     intro:
       "እያንዳንዱ የAgroVision ጥናት ቡድን አባል ከግኝት እስከዚህ ዲጂታል ህትመት ድረስ ያለውን ጉዟችንን በሁሉም ስድስት የE-LAB ፈተናዎች ውስጥ መዝግቧል።",
     videoChallenges: [
-      { title: "ፈተና 1", description: "ይህ ፈተና ስለሸፈነው ነገር አጭር መግለጫ ያክሉ።" },
-      { title: "ፈተና 2", description: "ይህ ፈተና ስለሸፈነው ነገር አጭር መግለጫ ያክሉ።" },
-      { title: "ፈተና 3", description: "ይህ ፈተና ስለሸፈነው ነገር አጭር መግለጫ ያክሉ።" },
-      { title: "ፈተና 4", description: "ይህ ፈተና ስለሸፈነው ነገር አጭር መግለጫ ያክሉ።" },
-      { title: "ፈተና 5", description: "ይህ ፈተና ስለሸፈነው ነገር አጭር መግለጫ ያክሉ።" },
+      { title: "ፈተና 1", description: "" },
+      { title: "ፈተና 2", description: "" },
+      { title: "ፈተና 3", description: "" },
+      { title: "ፈተና 4", description: "" },
+      { title: "ፈተና 5", description: "" },
     ],
     challenge6Label: "ዲጂታል ህትመት · ፈተና 6",
     challenge6Title: "ፈተና 6፦ ዲጂታል ህትመት",

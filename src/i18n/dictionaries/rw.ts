@@ -247,11 +247,11 @@ const dict: Dictionary = {
     intro:
       "Buri munyamuryango w'itsinda ry'ubushakashatsi rya AgroVision yanditse urugendo rwacu mu mihigo yose itandatu ya E-LAB — kuva ku ivumburwa kugeza kuri iki gitabo cya digitale.",
     videoChallenges: [
-      { title: "Umuhigo wa 1", description: "Ongeraho ibisobanuro bigufi by'ibyo uyu muhigo werekeje." },
-      { title: "Umuhigo wa 2", description: "Ongeraho ibisobanuro bigufi by'ibyo uyu muhigo werekeje." },
-      { title: "Umuhigo wa 3", description: "Ongeraho ibisobanuro bigufi by'ibyo uyu muhigo werekeje." },
-      { title: "Umuhigo wa 4", description: "Ongeraho ibisobanuro bigufi by'ibyo uyu muhigo werekeje." },
-      { title: "Umuhigo wa 5", description: "Ongeraho ibisobanuro bigufi by'ibyo uyu muhigo werekeje." },
+      { title: "Umuhigo wa 1", description: "" },
+      { title: "Umuhigo wa 2", description: "" },
+      { title: "Umuhigo wa 3", description: "" },
+      { title: "Umuhigo wa 4", description: "" },
+      { title: "Umuhigo wa 5", description: "" },
     ],
     challenge6Label: "Igitabo cya Digitale · Umuhigo wa 6",
     challenge6Title: "Umuhigo wa 6: Igitabo cya Digitale",

@@ -251,11 +251,11 @@ const dict: Dictionary = {
     intro:
       "Every AgroVision think tank member documented our journey through all six E-LAB challenges — from discovery to this digital print.",
     videoChallenges: [
-      { title: "Challenge 1", description: "Add a short description of what this challenge covered." },
-      { title: "Challenge 2", description: "Add a short description of what this challenge covered." },
-      { title: "Challenge 3", description: "Add a short description of what this challenge covered." },
-      { title: "Challenge 4", description: "Add a short description of what this challenge covered." },
-      { title: "Challenge 5", description: "Add a short description of what this challenge covered." },
+      { title: "Challenge 1", description: "" },
+      { title: "Challenge 2", description: "" },
+      { title: "Challenge 3", description: "" },
+      { title: "Challenge 4", description: "" },
+      { title: "Challenge 5", description: "" },
     ],
     challenge6Label: "Digital Print · Challenge 6",
     challenge6Title: "Challenge 6: Digital Print",

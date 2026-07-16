@@ -244,11 +244,11 @@ const dict: Dictionary = {
     intro:
       "كل واحد في فريق AgroVision كتب رحلتنا في كل الستة تحديات بتاع E-LAB — من البداية لحدي الطبعة الديجيتال دي.",
     videoChallenges: [
-      { title: "التحدي 1", description: "زيد وصف قصير لشنو التحدي دا غطاه." },
-      { title: "التحدي 2", description: "زيد وصف قصير لشنو التحدي دا غطاه." },
-      { title: "التحدي 3", description: "زيد وصف قصير لشنو التحدي دا غطاه." },
-      { title: "التحدي 4", description: "زيد وصف قصير لشنو التحدي دا غطاه." },
-      { title: "التحدي 5", description: "زيد وصف قصير لشنو التحدي دا غطاه." },
+      { title: "التحدي 1", description: "" },
+      { title: "التحدي 2", description: "" },
+      { title: "التحدي 3", description: "" },
+      { title: "التحدي 4", description: "" },
+      { title: "التحدي 5", description: "" },
     ],
     challenge6Label: "الطبعة الديجيتال · التحدي 6",
     challenge6Title: "التحدي 6: الطبعة الديجيتال",

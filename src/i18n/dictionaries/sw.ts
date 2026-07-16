@@ -245,11 +245,11 @@ const dict: Dictionary = {
     intro:
       "Kila mwanachama wa timu ya utafiti ya AgroVision aliandika safari yetu katika changamoto zote sita za E-LAB — kutoka ugunduzi hadi chapisho hili la kidijitali.",
     videoChallenges: [
-      { title: "Changamoto ya 1", description: "Ongeza maelezo mafupi ya kile changamoto hii ilichofunika." },
-      { title: "Changamoto ya 2", description: "Ongeza maelezo mafupi ya kile changamoto hii ilichofunika." },
-      { title: "Changamoto ya 3", description: "Ongeza maelezo mafupi ya kile changamoto hii ilichofunika." },
-      { title: "Changamoto ya 4", description: "Ongeza maelezo mafupi ya kile changamoto hii ilichofunika." },
-      { title: "Changamoto ya 5", description: "Ongeza maelezo mafupi ya kile changamoto hii ilichofunika." },
+      { title: "Changamoto ya 1", description: "" },
+      { title: "Changamoto ya 2", description: "" },
+      { title: "Changamoto ya 3", description: "" },
+      { title: "Changamoto ya 4", description: "" },
+      { title: "Changamoto ya 5", description: "" },
     ],
     challenge6Label: "Chapisho la Kidijitali · Changamoto ya 6",
     challenge6Title: "Changamoto ya 6: Chapisho la Kidijitali",

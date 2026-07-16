@@ -67,9 +67,11 @@ export default async function ChallengesPage({ params }: Props) {
                     <h3 className="font-semibold text-green-900 group-hover:text-green-700 dark:text-green-50 dark:group-hover:text-lime-400">
                       {challenge.title}
                     </h3>
-                    <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
-                      {challenge.description}
-                    </p>
+                    {challenge.description && (
+                      <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">
+                        {challenge.description}
+                      </p>
+                    )}
                   </div>
                 </div>
               </TiltCard>

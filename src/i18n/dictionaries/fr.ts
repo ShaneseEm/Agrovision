@@ -253,11 +253,11 @@ const dict: Dictionary = {
     intro:
       "Chaque membre du think tank AgroVision a documenté notre parcours à travers les six défis E-LAB — de la découverte jusqu'à cette édition numérique.",
     videoChallenges: [
-      { title: "Défi 1", description: "Ajoutez une courte description de ce défi." },
-      { title: "Défi 2", description: "Ajoutez une courte description de ce défi." },
-      { title: "Défi 3", description: "Ajoutez une courte description de ce défi." },
-      { title: "Défi 4", description: "Ajoutez une courte description de ce défi." },
-      { title: "Défi 5", description: "Ajoutez une courte description de ce défi." },
+      { title: "Défi 1", description: "" },
+      { title: "Défi 2", description: "" },
+      { title: "Défi 3", description: "" },
+      { title: "Défi 4", description: "" },
+      { title: "Défi 5", description: "" },
     ],
     challenge6Label: "Édition Numérique · Défi 6",
     challenge6Title: "Défi 6 : Édition Numérique",
