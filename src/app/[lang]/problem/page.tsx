@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import WaveDivider from "@/components/WaveDivider";
+import TiltCard from "@/components/TiltCard";
 import { isLocale, type Locale } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { notFound } from "next/navigation";
@@ -58,10 +59,12 @@ export default async function ProblemPage({ params }: Props) {
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {t.affectedGroups.map((group, i) => (
               <Reveal key={group.name} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
-                  <h3 className="font-semibold text-green-900 dark:text-green-50">{group.name}</h3>
-                  <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{group.detail}</p>
-                </div>
+                <TiltCard>
+                  <div className="h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                    <h3 className="font-semibold text-green-900 dark:text-green-50">{group.name}</h3>
+                    <p className="mt-2 text-sm text-green-900/70 dark:text-green-100/70">{group.detail}</p>
+                  </div>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -76,19 +79,21 @@ export default async function ProblemPage({ params }: Props) {
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {t.pestle.map((item, i) => (
             <Reveal key={item.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-800 font-bold text-white dark:bg-lime-400 dark:text-green-950">
-                    {item.letter}
-                  </span>
-                  <h3 className="font-semibold text-green-900 dark:text-green-50">{item.title}</h3>
+              <TiltCard>
+                <div className="h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-800 font-bold text-white dark:bg-lime-400 dark:text-green-950">
+                      {item.letter}
+                    </span>
+                    <h3 className="font-semibold text-green-900 dark:text-green-50">{item.title}</h3>
+                  </div>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-green-900/70 dark:text-green-100/70">
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-green-900/70 dark:text-green-100/70">
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

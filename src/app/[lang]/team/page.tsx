@@ -3,6 +3,7 @@ import ImageWithFallback from "@/components/ImageWithFallback";
 import Reveal from "@/components/Reveal";
 import WaveDivider from "@/components/WaveDivider";
 import FlagIcon from "@/components/FlagIcon";
+import TiltCard from "@/components/TiltCard";
 import { isLocale, type Locale } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { notFound } from "next/navigation";
@@ -103,24 +104,26 @@ export default async function TeamPage({ params }: Props) {
                 delay={i * 100}
                 className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
               >
-                <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
-                  <div className="overflow-hidden">
-                    <ImageWithFallback
-                      src={member.photo}
-                      alt={member.name}
-                      label={`Add photo (public${member.photo})`}
-                      className={`aspect-square w-full object-cover transition-transform duration-500 ${member.photoClassName || "group-hover:scale-105"}`}
-                    />
+                <TiltCard>
+                  <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+                    <div className="overflow-hidden">
+                      <ImageWithFallback
+                        src={member.photo}
+                        alt={member.name}
+                        label={`Add photo (public${member.photo})`}
+                        className={`aspect-square w-full object-cover transition-transform duration-500 ${member.photoClassName || "group-hover:scale-105"}`}
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="flex items-center gap-2 font-semibold text-green-900 dark:text-green-50">
+                        <FlagIcon country={member.flag} className="h-3.5 w-5 shrink-0" />
+                        {member.name}
+                      </h3>
+                      <p className="text-sm font-medium text-green-600 dark:text-lime-400">{info.role}</p>
+                      <p className="mt-3 text-sm text-green-900/70 dark:text-green-100/70">{info.bio}</p>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="flex items-center gap-2 font-semibold text-green-900 dark:text-green-50">
-                      <FlagIcon country={member.flag} className="h-3.5 w-5 shrink-0" />
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-medium text-green-600 dark:text-lime-400">{info.role}</p>
-                    <p className="mt-3 text-sm text-green-900/70 dark:text-green-100/70">{info.bio}</p>
-                  </div>
-                </div>
+                </TiltCard>
               </Reveal>
             );
           })}

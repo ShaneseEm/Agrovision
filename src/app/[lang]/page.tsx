@@ -5,6 +5,8 @@ import WaveDivider from "@/components/WaveDivider";
 import FloatingGardenScene from "@/components/FloatingGardenScene";
 import TiltCard from "@/components/TiltCard";
 import Icon from "@/components/Icon";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import MagneticLink from "@/components/MagneticLink";
 import { isLocale, type Locale } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { notFound } from "next/navigation";
@@ -50,13 +52,13 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </Reveal>
             <Reveal delay={300}>
               <div className="flex flex-wrap gap-4 pt-2">
-                <Link
+                <MagneticLink
                   href={`/${locale}/solution`}
-                  className="group rounded-full bg-lime-400 px-6 py-3 font-semibold text-green-950 shadow-lg shadow-lime-500/20 transition-all hover:-translate-y-0.5 hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-500/30"
+                  className="group rounded-full bg-lime-400 px-6 py-3 font-semibold text-green-950 shadow-lg shadow-lime-500/20 transition-[background-color,box-shadow] hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-500/30"
                 >
                   {t.ctaPrimary}
                   <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">→</span>
-                </Link>
+                </MagneticLink>
                 <Link
                   href={`/${locale}/problem`}
                   className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
@@ -70,6 +72,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <FloatingGardenScene />
           </Reveal>
         </div>
+        <div className="scroll-cue pointer-events-none absolute inset-x-0 bottom-6 z-10 flex justify-center text-white/70">
+          <Icon name="keyboard_arrow_down" className="text-3xl" />
+        </div>
         <WaveDivider />
       </section>
 
@@ -82,7 +87,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   <Icon name={stat.icon} className="text-2xl" />
                 </span>
                 <p className="mt-4 font-display text-3xl font-semibold text-green-800 transition-colors dark:text-lime-400">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </p>
                 <p className="mt-2 text-sm text-green-900/80 dark:text-green-100/70">{stat.label}</p>
               </div>

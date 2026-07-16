@@ -21,6 +21,8 @@ export default function TiltCard({
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     node.style.setProperty("--tilt-x", `${(-y * maxTilt).toFixed(2)}deg`);
     node.style.setProperty("--tilt-y", `${(x * maxTilt).toFixed(2)}deg`);
+    node.style.setProperty("--spot-x", `${((x + 0.5) * 100).toFixed(1)}%`);
+    node.style.setProperty("--spot-y", `${((y + 0.5) * 100).toFixed(1)}%`);
   }
 
   function handleMouseLeave() {
@@ -37,7 +39,10 @@ export default function TiltCard({
       onMouseLeave={handleMouseLeave}
       className={`tilt-card h-full ${className}`}
     >
-      <div className="tilt-card-inner h-full">{children}</div>
+      <div className="tilt-card-inner relative h-full">
+        {children}
+        <div className="spotlight-overlay" />
+      </div>
     </div>
   );
 }

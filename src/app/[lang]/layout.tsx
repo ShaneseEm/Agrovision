@@ -60,6 +60,7 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === "pga" ? "rtl" : "ltr"}
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
