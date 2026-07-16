@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import Reveal from "@/components/Reveal";
 import WaveDivider from "@/components/WaveDivider";
+import FlagIcon from "@/components/FlagIcon";
 import { isLocale, type Locale } from "@/i18n/locales";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { notFound } from "next/navigation";
@@ -15,35 +16,35 @@ const teamMembers = [
     photo: "/images/team/Angel.jpeg",
     photoClassName: "",
     country: "South Sudan",
-    flag: "🇸🇸",
+    flag: "SS" as const,
   },
   {
     name: "Ryan",
     photo: "/images/team/Ryan.jpeg",
     photoClassName: "",
     country: "Rwanda",
-    flag: "🇷🇼",
+    flag: "RW" as const,
   },
   {
     name: "Bethelhem Alemayehu Ejigu",
     photo: "/images/team/Bethelhem.jpg",
     photoClassName: "",
     country: "Ethiopia",
-    flag: "🇪🇹",
+    flag: "ET" as const,
   },
   {
     name: "Jess",
     photo: "/images/team/Jess.jpeg",
     photoClassName: "",
     country: "Rwanda",
-    flag: "🇷🇼",
+    flag: "RW" as const,
   },
   {
     name: "Birasa Ian Lael",
     photo: "/images/team/Lael.jpeg",
     photoClassName: "scale-150 object-[50%_71%] group-hover:scale-[1.65]",
     country: "Rwanda",
-    flag: "🇷🇼",
+    flag: "RW" as const,
   },
 ];
 
@@ -113,7 +114,7 @@ export default async function TeamPage({ params }: Props) {
                   </div>
                   <div className="p-6">
                     <h3 className="flex items-center gap-2 font-semibold text-green-900 dark:text-green-50">
-                      <span aria-hidden="true">{member.flag}</span>
+                      <FlagIcon country={member.flag} className="h-3.5 w-5 shrink-0" />
                       {member.name}
                     </h3>
                     <p className="text-sm font-medium text-green-600 dark:text-lime-400">{info.role}</p>
