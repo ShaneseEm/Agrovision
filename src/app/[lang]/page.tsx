@@ -5,43 +5,17 @@ import WaveDivider from "@/components/WaveDivider";
 import FloatingGardenScene from "@/components/FloatingGardenScene";
 import TiltCard from "@/components/TiltCard";
 import Icon from "@/components/Icon";
+import { isLocale, type Locale } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { notFound } from "next/navigation";
 
-const stats = [
-  { value: "90,000+", label: "People displaced by flooding in Upper Nile State over 3 years", icon: "flood" },
-  { value: "7.1M", label: "People facing acute food insecurity nationwide (2023 lean season)", icon: "nutrition" },
-  { value: "80%", label: "Of South Sudan's population relies on farming and livestock", icon: "agriculture" },
-];
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale: Locale = lang;
+  const dict = await getDictionary(locale);
+  const t = dict.home;
 
-const quickLinks = [
-  {
-    href: "/problem",
-    title: "The Problem",
-    description:
-      "Climate-driven flooding in Upper Nile State is destroying farmland and deepening food insecurity.",
-    icon: "warning",
-  },
-  {
-    href: "/solution",
-    title: "Our Solution",
-    description:
-      "Floating gardens: a flood-resilient farming method built from locally available materials.",
-    icon: "eco",
-  },
-  {
-    href: "/team",
-    title: "The Team",
-    description: "Meet the AgroVision think tank behind the research and the solution.",
-    icon: "handshake",
-  },
-  {
-    href: "/challenges",
-    title: "E-LAB Challenges",
-    description: "Follow our journey through all six E-LAB Think Tank challenges.",
-    icon: "emoji_events",
-  },
-];
-
-export default function Home() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section className="relative bg-linear-to-b from-green-900 via-green-900 to-green-800 text-white">
@@ -61,38 +35,33 @@ export default function Home() {
           <div className="flex flex-col items-start gap-6">
             <Reveal>
               <p className="rounded-full bg-lime-400/20 px-4 py-1 text-sm font-semibold text-lime-300 ring-1 ring-lime-300/30">
-                African Leadership University &middot; E-Lab Think Tank
+                {t.badge}
               </p>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-                Growing <span className="text-shimmer">food security</span> in South Sudan,
-                one floating garden at a time.
+                {t.heroTitleBefore}
+                <span className="text-shimmer">{t.heroTitleHighlight}</span>
+                {t.heroTitleAfter}
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="max-w-2xl text-lg text-green-100">
-                AgroVision&apos;s mission is to support farmers with sustainable farming
-                solutions, modern technology, and market access to improve food security,
-                increase productivity, and strengthen communities.
-              </p>
+              <p className="max-w-2xl text-lg text-green-100">{t.heroSubtitle}</p>
             </Reveal>
             <Reveal delay={300}>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
-                  href="/solution"
+                  href={`/${locale}/solution`}
                   className="group rounded-full bg-lime-400 px-6 py-3 font-semibold text-green-950 shadow-lg shadow-lime-500/20 transition-all hover:-translate-y-0.5 hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-500/30"
                 >
-                  See Our Solution
-                  <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
+                  {t.ctaPrimary}
+                  <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">→</span>
                 </Link>
                 <Link
-                  href="/problem"
+                  href={`/${locale}/problem`}
                   className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
                 >
-                  Learn About the Problem
+                  {t.ctaSecondary}
                 </Link>
               </div>
             </Reveal>
@@ -105,7 +74,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 px-6 py-16 sm:grid-cols-3">
-        {stats.map((stat, i) => (
+        {t.stats.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 120}>
             <TiltCard>
               <div className="group h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
@@ -134,21 +103,13 @@ export default function Home() {
               />
             </Reveal>
             <Reveal delay={150}>
-              <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">
-                A community-based solution
-              </h2>
-              <p className="mt-4 text-green-900/80 dark:text-green-100/80">
-                AgroVision is a community-based organization dedicated to reducing
-                malnutrition and food insecurity in South Sudan. We work alongside local
-                farmers, community leaders, agricultural experts, NGOs, and government
-                partners to design solutions that survive and scale in a flood-prone
-                environment.
-              </p>
+              <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.communityTitle}</h2>
+              <p className="mt-4 text-green-900/80 dark:text-green-100/80">{t.communityBody}</p>
               <Link
-                href="/team"
+                href={`/${locale}/team`}
                 className="group mt-6 inline-flex items-center gap-1 font-semibold text-green-800 underline decoration-lime-400 decoration-2 underline-offset-4 dark:text-lime-400"
               >
-                Meet the team
+                {t.meetTeam}
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
             </Reveal>
@@ -158,13 +119,8 @@ export default function Home() {
 
       <section className="mx-auto max-w-4xl px-6 py-16 text-center">
         <Reveal>
-          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">
-            Rooted Across the Continent
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-green-900/80 dark:text-green-100/80">
-            South Sudan is one piece of a much bigger picture &mdash; sustainable, climate-resilient
-            farming is a shared challenge and a shared opportunity across Africa.
-          </p>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.continentTitle}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-green-900/80 dark:text-green-100/80">{t.continentBody}</p>
         </Reveal>
         <Reveal delay={150}>
           <ImageWithFallback
@@ -178,14 +134,14 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <Reveal>
-          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Explore the Digital Print</h2>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.exploreTitle}</h2>
         </Reveal>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {quickLinks.map((link, i) => (
+          {t.quickLinks.map((link, i) => (
             <Reveal key={link.href} delay={i * 100}>
               <TiltCard>
                 <Link
-                  href={link.href}
+                  href={`/${locale}${link.href}`}
                   className="group block h-full rounded-2xl border border-green-900/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-lime-400/50 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40"
                 >
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-900/5 text-green-800 transition-transform group-hover:scale-110 group-hover:bg-lime-400/10 dark:bg-lime-400/10 dark:text-lime-400">

@@ -27,14 +27,14 @@ function setTheme(theme: Theme) {
   listeners.forEach((listener) => listener());
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ label = "Toggle light and dark mode" }: { label?: string }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return (
     <button
       type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      aria-label="Toggle light and dark mode"
+      aria-label={label}
       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 text-base text-white transition-all hover:-translate-y-0.5 hover:border-lime-300/60 hover:bg-white/10"
     >
       <Icon name={theme === "dark" ? "light_mode" : "dark_mode"} className="text-lg" />

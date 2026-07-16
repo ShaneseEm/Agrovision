@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { notFound } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import "./globals.css";
+import { locales, isLocale, type Locale } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,20 +25,40 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-export const metadata: Metadata = {
-  title: "AgroVision | Digital Print",
-  description:
-    "AgroVision's Digital Print: mission, problem statement, floating-gardens solution, think tank team, and E-LAB challenges.",
-};
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
 
-export default function RootLayout({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  return {
+    title: dict.meta.homeTitle,
+    description: dict.meta.homeDescription,
+  };
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale: Locale = lang;
+  const dict = await getDictionary(locale);
+
   return (
     <html
-      lang="en"
+      lang={locale}
+      dir={locale === "pga" ? "rtl" : "ltr"}
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full scroll-smooth antialiased`}
     >
       <head>
@@ -52,9 +76,13 @@ export default function RootLayout({
           }}
         />
         <ScrollProgress />
-        <NavBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <NavBar lang={locale} dict={dict.nav} />
+        <main className="flex-1">
+          <ViewTransition enter="page-enter" exit="page-exit">
+            {children}
+          </ViewTransition>
+        </main>
+        <Footer lang={locale} dict={dict.footer} nav={dict.nav} />
       </body>
     </html>
   );

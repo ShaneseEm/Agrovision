@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import type { Locale } from "@/i18n/locales";
+import type { Dictionary } from "@/i18n/dictionary";
 
 const socialLinks = [
   {
@@ -24,27 +26,32 @@ const socialLinks = [
   },
 ];
 
-const siteLinks = [
-  { href: "/", label: "Home" },
-  { href: "/problem", label: "The Problem" },
-  { href: "/solution", label: "Our Solution" },
-  { href: "/team", label: "Team" },
-  { href: "/challenges", label: "E-LAB Challenges" },
-];
+export default function Footer({
+  lang,
+  dict,
+  nav,
+}: {
+  lang: Locale;
+  dict: Dictionary["footer"];
+  nav: Dictionary["nav"];
+}) {
+  const siteLinks = [
+    { href: `/${lang}`, label: nav.home },
+    { href: `/${lang}/problem`, label: nav.problem },
+    { href: `/${lang}/solution`, label: nav.solution },
+    { href: `/${lang}/team`, label: nav.team },
+    { href: `/${lang}/challenges`, label: nav.challenges },
+  ];
 
-export default function Footer() {
   return (
     <footer className="border-t border-green-900/10 bg-green-950/95 text-green-100 backdrop-blur-md dark:border-green-100/10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-14 text-sm sm:grid-cols-3">
         <div>
-          <Link href="/" className="flex items-center gap-2 font-display text-lg font-semibold text-white">
+          <Link href={`/${lang}`} className="flex items-center gap-2 font-display text-lg font-semibold text-white">
             <Icon name="eco" className="text-xl" />
             AgroVision
           </Link>
-          <p className="mt-3 max-w-xs text-green-300">
-            Supporting farmers with sustainable solutions, modern technology, and market
-            access to improve food security in South Sudan.
-          </p>
+          <p className="mt-3 max-w-xs text-green-300">{dict.tagline}</p>
           <div className="mt-5 flex gap-3">
             {socialLinks.map((social) => (
               <a
@@ -62,14 +69,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">Explore</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">{dict.explore}</p>
           <ul className="mt-4 space-y-2">
             {siteLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-green-300 transition-colors hover:text-white"
-                >
+                <Link href={link.href} className="text-green-300 transition-colors hover:text-white">
                   {link.label}
                 </Link>
               </li>
@@ -78,23 +82,23 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">About This Project</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">{dict.aboutProject}</p>
           <p className="mt-4 text-green-300">
-            African Leadership University
+            {dict.university}
             <br />
-            Innovation and Business Track (IBT) | E-Lab
+            {dict.track}
           </p>
           <p className="mt-4 text-green-300">
-            Grand Challenge: Agriculture &amp; Food Security
+            {dict.grandChallenge}
             <br />
-            Community Focus: South Sudan
+            {dict.communityFocus}
           </p>
         </div>
       </div>
 
       <div className="border-t border-green-100/10">
         <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-green-400">
-          &copy; {new Date().getFullYear()} AgroVision Think Tank. All rights reserved.
+          &copy; {new Date().getFullYear()} {dict.rights}
         </div>
       </div>
     </footer>

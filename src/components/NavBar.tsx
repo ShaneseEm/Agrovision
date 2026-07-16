@@ -5,19 +5,22 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import Icon from "@/components/Icon";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n/locales";
+import type { Dictionary } from "@/i18n/dictionary";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/problem", label: "The Problem" },
-  { href: "/solution", label: "Our Solution" },
-  { href: "/team", label: "Team" },
-  { href: "/challenges", label: "E-LAB Challenges" },
-];
-
-export default function NavBar() {
+export default function NavBar({ lang, dict }: { lang: Locale; dict: Dictionary["nav"] }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const links = [
+    { href: `/${lang}`, label: dict.home },
+    { href: `/${lang}/problem`, label: dict.problem },
+    { href: `/${lang}/solution`, label: dict.solution },
+    { href: `/${lang}/team`, label: dict.team },
+    { href: `/${lang}/challenges`, label: dict.challenges },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -28,6 +31,7 @@ export default function NavBar() {
 
   return (
     <header
+      style={{ viewTransitionName: "site-header" }}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         scrolled || open
           ? "border-green-100/10 bg-green-950/70 shadow-lg shadow-green-950/20 backdrop-blur-md"
@@ -36,14 +40,14 @@ export default function NavBar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
-          href="/"
+          href={`/${lang}`}
           className="flex items-center gap-2 text-lg font-bold text-white transition-transform hover:scale-105"
         >
           <Icon name="eco" className="text-xl" />
           AgroVision
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <ul className="flex gap-8 text-sm font-medium text-green-100">
             {links.map((link) => {
               const active = pathname === link.href;
@@ -66,16 +70,18 @@ export default function NavBar() {
               );
             })}
           </ul>
-          <ThemeToggle />
+          <LanguageSwitcher lang={lang} label={dict.languageSwitcher} />
+          <ThemeToggle label={dict.toggleTheme} />
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <LanguageSwitcher lang={lang} label={dict.languageSwitcher} />
+          <ThemeToggle label={dict.toggleTheme} />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             className="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white transition-transform active:scale-90"
-            aria-label="Toggle navigation menu"
+            aria-label={dict.toggleMenu}
             aria-expanded={open}
           >
             <Icon name={open ? "close" : "menu"} className="text-xl" />

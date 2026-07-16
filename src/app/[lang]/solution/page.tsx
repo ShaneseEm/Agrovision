@@ -2,36 +2,26 @@ import type { Metadata } from "next";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import Reveal from "@/components/Reveal";
 import WaveDivider from "@/components/WaveDivider";
+import { isLocale, type Locale } from "@/i18n/locales";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Our Solution | AgroVision",
-  description: "Floating gardens: a flood-resilient farming solution for South Sudan.",
-};
+type Props = { params: Promise<{ lang: string }> };
 
-const materials = [
-  {
-    name: "Water hyacinth",
-    detail: "An abundant invasive plant repurposed as buoyant, decomposing growing material.",
-  },
-  {
-    name: "Reeds",
-    detail: "Locally harvested reeds bind the floating bed and provide structural support.",
-  },
-  {
-    name: "Compost",
-    detail: "Organic compost layered on top gives crops a nutrient-rich rooting medium.",
-  },
-];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const dict = await getDictionary(lang);
+  return { title: dict.solution.metaTitle, description: dict.solution.metaDescription };
+}
 
-const partners = [
-  "Local farmers",
-  "Community leaders",
-  "Agricultural experts",
-  "NGOs",
-  "Government partners",
-];
+export default async function SolutionPage({ params }: Props) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale: Locale = lang;
+  const dict = await getDictionary(locale);
+  const t = dict.solution;
 
-export default function SolutionPage() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section className="relative overflow-hidden bg-green-900 text-white">
@@ -40,20 +30,15 @@ export default function SolutionPage() {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wide text-lime-300">Our Solution</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-lime-300">{t.badge}</p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-              Floating Gardens
+              {t.title}
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-6 max-w-3xl text-lg text-green-100">
-              An innovative farming method that enables communities to grow crops on
-              floating beds made from locally available materials. These gardens rise and
-              fall with water levels, making them ideal for flood-prone areas and ensuring
-              year-round food production.
-            </p>
+            <p className="mt-6 max-w-3xl text-lg text-green-100">{t.intro}</p>
           </Reveal>
         </div>
         <WaveDivider />
@@ -62,15 +47,10 @@ export default function SolutionPage() {
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
           <Reveal>
-            <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">How It Works</h2>
-            <p className="mt-4 text-green-900/80 dark:text-green-100/80">
-              Floating gardens are built from layers of locally sourced, buoyant
-              materials. Because the beds float on the water&apos;s surface, they rise and
-              fall naturally with flood levels &mdash; protecting crops instead of losing
-              them when the water comes.
-            </p>
+            <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.howTitle}</h2>
+            <p className="mt-4 text-green-900/80 dark:text-green-100/80">{t.howBody}</p>
             <ul className="mt-6 space-y-4">
-              {materials.map((material) => (
+              {t.materials.map((material) => (
                 <li key={material.name} className="group flex gap-3">
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-lime-500 transition-transform group-hover:scale-150" />
                   <div>
@@ -104,13 +84,8 @@ export default function SolutionPage() {
               />
             </Reveal>
             <Reveal delay={150} className="md:order-1">
-              <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">The Prototype</h2>
-              <p className="mt-4 text-green-900/80 dark:text-green-100/80">
-                Our think tank designed and tested a small-scale floating garden
-                prototype to validate the concept: a buoyant frame of reeds and water
-                hyacinth, topped with a compost growing bed, anchored to allow it to
-                safely rise and fall with the water level.
-              </p>
+              <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.prototypeTitle}</h2>
+              <p className="mt-4 text-green-900/80 dark:text-green-100/80">{t.prototypeBody}</p>
             </Reveal>
           </div>
         </div>
@@ -118,13 +93,10 @@ export default function SolutionPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <Reveal>
-          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">Who Implements It</h2>
-          <p className="mt-4 max-w-3xl text-green-900/70 dark:text-green-100/70">
-            The solution is implemented through training and community support programs,
-            bringing together:
-          </p>
+          <h2 className="text-2xl font-bold text-green-900 dark:text-green-50">{t.implementsTitle}</h2>
+          <p className="mt-4 max-w-3xl text-green-900/70 dark:text-green-100/70">{t.implementsBody}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {partners.map((partner) => (
+            {t.partners.map((partner) => (
               <span
                 key={partner}
                 className="rounded-full bg-green-800 px-4 py-2 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 hover:shadow-md dark:bg-lime-400 dark:text-green-950"
