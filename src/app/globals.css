@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,10 +16,15 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
@@ -34,8 +41,23 @@ h3 {
 }
 
 ::selection {
-  background: #fcd34d;
+  background: #bbf7d0;
   color: #052e16;
+}
+
+.icon-symbol {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
 }
 
 .bg-dot-grid {
@@ -89,7 +111,7 @@ h3 {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #fcd34d, #86efac, #fcd34d);
+  background: linear-gradient(90deg, #bef264, #ffffff, #86efac, #bef264);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

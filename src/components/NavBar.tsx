@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
+import Icon from "@/components/Icon";
 
 const links = [
   { href: "/", label: "Home" },
@@ -28,7 +30,7 @@ export default function NavBar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         scrolled || open
-          ? "border-green-100/10 bg-green-950/90 shadow-lg shadow-green-950/20 backdrop-blur"
+          ? "border-green-100/10 bg-green-950/70 shadow-lg shadow-green-950/20 backdrop-blur-md"
           : "border-transparent bg-transparent"
       }`}
     >
@@ -37,53 +39,59 @@ export default function NavBar() {
           href="/"
           className="flex items-center gap-2 text-lg font-bold text-white transition-transform hover:scale-105"
         >
-          <span aria-hidden="true">🌾</span>
+          <Icon name="eco" className="text-xl" />
           AgroVision
         </Link>
 
-        <ul className="hidden gap-8 text-sm font-medium text-green-100 md:flex">
-          {links.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`group relative py-1 transition-colors hover:text-amber-300 ${
-                    active ? "text-amber-300" : ""
-                  }`}
-                >
-                  {link.label}
-                  <span
-                    className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-amber-400 transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
+        <div className="hidden items-center gap-8 md:flex">
+          <ul className="flex gap-8 text-sm font-medium text-green-100">
+            {links.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`group relative py-1 transition-colors hover:text-lime-300 ${
+                      active ? "text-lime-300" : ""
                     }`}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-lime-400 transition-all duration-300 ${
+                        active ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <ThemeToggle />
+        </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white transition-transform active:scale-90 md:hidden"
-          aria-label="Toggle navigation menu"
-          aria-expanded={open}
-        >
-          <span className="text-xl leading-none">{open ? "×" : "☰"}</span>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white transition-transform active:scale-90"
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+          >
+            <Icon name={open ? "close" : "menu"} className="text-xl" />
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-green-100/10 bg-green-950/95 px-6 py-4 text-sm font-medium text-green-100 backdrop-blur md:hidden">
+        <ul className="flex flex-col gap-1 border-t border-green-100/10 bg-green-950/80 px-6 py-4 text-sm font-medium text-green-100 backdrop-blur-md md:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`block rounded-md px-2 py-2 transition-colors hover:bg-white/5 ${
-                  pathname === link.href ? "text-amber-300" : ""
+                  pathname === link.href ? "text-lime-300" : ""
                 }`}
               >
                 {link.label}

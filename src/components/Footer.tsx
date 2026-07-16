@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Icon from "@/components/Icon";
 
 const socialLinks = [
   {
@@ -33,11 +34,11 @@ const siteLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-green-900/10 bg-green-950 text-green-100 dark:border-green-100/10">
+    <footer className="border-t border-green-900/10 bg-green-950/95 text-green-100 backdrop-blur-md dark:border-green-100/10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-14 text-sm sm:grid-cols-3">
         <div>
           <Link href="/" className="flex items-center gap-2 font-display text-lg font-semibold text-white">
-            <span aria-hidden="true">🌾</span>
+            <Icon name="eco" className="text-xl" />
             AgroVision
           </Link>
           <p className="mt-3 max-w-xs text-green-300">
@@ -52,7 +53,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all hover:-translate-y-0.5 hover:border-amber-400/60 hover:text-amber-400"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all hover:-translate-y-0.5 hover:border-lime-400/60 hover:text-lime-400"
               >
                 {social.icon}
               </a>
@@ -61,7 +62,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">Explore</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">Explore</p>
           <ul className="mt-4 space-y-2">
             {siteLinks.map((link) => (
               <li key={link.href}>
@@ -77,7 +78,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">About This Project</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-lime-400">About This Project</p>
           <p className="mt-4 text-green-300">
             African Leadership University
             <br />

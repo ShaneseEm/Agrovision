@@ -40,7 +40,7 @@ export default function SolutionPage() {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">Our Solution</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-lime-300">Our Solution</p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
@@ -72,7 +72,7 @@ export default function SolutionPage() {
             <ul className="mt-6 space-y-4">
               {materials.map((material) => (
                 <li key={material.name} className="group flex gap-3">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500 transition-transform group-hover:scale-150" />
+                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-lime-500 transition-transform group-hover:scale-150" />
                   <div>
                     <p className="font-semibold text-green-900 dark:text-green-50">{material.name}</p>
                     <p className="text-sm text-green-900/70 dark:text-green-100/70">{material.detail}</p>
@@ -86,13 +86,13 @@ export default function SolutionPage() {
               src="/images/solution/prototypeee.jpg"
               alt="Sketch of the floating garden design"
               label="Add the floating garden sketch here (public/images/solution/prototypeee.jpg)"
-              className="max-h-130 w-full rounded-2xl bg-white object-contain p-2 shadow-lg transition-transform duration-500 hover:scale-[1.02] dark:bg-green-950/60"
+              className="max-h-130 w-full rounded-2xl bg-white/80 object-contain p-2 shadow-lg backdrop-blur-md transition-transform duration-500 hover:scale-[1.02] dark:bg-green-950/60"
             />
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-amber-50 dark:bg-green-950/20">
+      <section className="bg-green-50/60 dark:bg-green-950/20">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
             <Reveal className="md:order-2">
@@ -100,7 +100,7 @@ export default function SolutionPage() {
                 src="/images/solution/prototype.jpg"
                 alt="AgroVision floating garden prototype"
                 label="Add a prototype photo or diagram here (public/images/solution/prototype.jpg)"
-                className="max-h-130 w-full rounded-2xl bg-white object-contain p-2 shadow-lg transition-transform duration-500 hover:scale-[1.02] dark:bg-green-950/60"
+                className="max-h-130 w-full rounded-2xl bg-white/80 object-contain p-2 shadow-lg backdrop-blur-md transition-transform duration-500 hover:scale-[1.02] dark:bg-green-950/60"
               />
             </Reveal>
             <Reveal delay={150} className="md:order-1">
@@ -127,7 +127,7 @@ export default function SolutionPage() {
             {partners.map((partner) => (
               <span
                 key={partner}
-                className="rounded-full bg-green-800 px-4 py-2 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 hover:shadow-md dark:bg-amber-400 dark:text-green-950"
+                className="rounded-full bg-green-800 px-4 py-2 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 hover:shadow-md dark:bg-lime-400 dark:text-green-950"
               >
                 {partner}
               </span>

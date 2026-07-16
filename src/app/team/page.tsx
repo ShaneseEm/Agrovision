@@ -15,30 +15,35 @@ const teamMembers = [
     role: "Leader",
     bio: "Fun fact: I love turning big community problems into business solutions! 😊",
     photo: "/images/team/Angel.jpeg",
+    photoClassName: "",
   },
   {
     name: "Ryan",
     role: "Secretary",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
     photo: "/images/team/Ryan.jpeg",
+    photoClassName: "",
   },
   {
     name: "Bethelhem Alemayehu Ejigu",
     role: "Developer",
     bio: "Fun fact: My favorite hobby is professional sleeping. 😴",
     photo: "/images/team/Bethelhem.jpg",
+    photoClassName: "",
   },
   {
     name: "Jess",
     role: "Video Editor",
     bio: "Short bio goes here — background, what they contributed to the think tank.",
     photo: "/images/team/Jess.jpeg",
+    photoClassName: "",
   },
   {
     name: "Birasa Ian Lael",
     role: "Researcher",
     bio: "Fun fact: I can play 3 different instruments. 😭",
     photo: "/images/team/Lael.jpeg",
+    photoClassName: "scale-125 group-hover:scale-[1.4]",
   },
 ];
 
@@ -47,11 +52,11 @@ export default function TeamPage() {
     <div className="flex flex-col overflow-hidden">
       <section className="relative overflow-hidden bg-green-900 text-white">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="blob absolute right-0 -top-10 h-72 w-72 rounded-full bg-amber-400/20 blur-3xl" />
+          <div className="blob absolute right-0 -top-10 h-72 w-72 rounded-full bg-lime-400/20 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
+            <p className="text-sm font-semibold uppercase tracking-wide text-lime-300">
               AgroVision Think Tank
             </p>
           </Reveal>
@@ -87,18 +92,18 @@ export default function TeamPage() {
               delay={i * 100}
               className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
             >
-              <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
+              <div className="group h-full overflow-hidden rounded-2xl border border-green-900/10 bg-white/70 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-green-100/10 dark:bg-green-950/40">
                 <div className="overflow-hidden">
                   <ImageWithFallback
                     src={member.photo}
                     alt={member.name}
                     label={`Add photo (public${member.photo})`}
-                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`aspect-square w-full object-cover transition-transform duration-500 ${member.photoClassName || "group-hover:scale-105"}`}
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-green-900 dark:text-green-50">{member.name}</h3>
-                  <p className="text-sm font-medium text-amber-600 dark:text-amber-400">{member.role}</p>
+                  <p className="text-sm font-medium text-green-600 dark:text-lime-400">{member.role}</p>
                   <p className="mt-3 text-sm text-green-900/70 dark:text-green-100/70">{member.bio}</p>
                 </div>
               </div>
