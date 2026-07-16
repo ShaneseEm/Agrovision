@@ -98,10 +98,10 @@ export default function ChallengesPage() {
           ))}
 
           <Reveal delay={videoChallenges.length * 100}>
-            <div className="group h-full overflow-hidden rounded-2xl border border-lime-400/40 bg-green-50/60 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-lime-400/30 dark:bg-green-950/40">
+            <div className="group h-full overflow-hidden rounded-2xl border-2 border-lime-400/60 bg-white/90 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-green-900/10 dark:border-lime-400/30 dark:bg-green-950/40">
               <div className="bg-dot-grid relative aspect-video w-full overflow-hidden bg-linear-to-br from-green-800 via-green-700 to-lime-600 text-white/15 transition-transform duration-500 group-hover:scale-105">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
-                  <Icon name="eco" className="text-5xl" />
+                  <Icon name="eco" className="text-5xl text-white" />
                   <p className="font-display text-2xl font-semibold text-white">AgroVision</p>
                   <p className="text-sm font-medium uppercase tracking-wide text-lime-200">
                     Digital Print &middot; Challenge 6

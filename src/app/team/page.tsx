@@ -43,7 +43,7 @@ const teamMembers = [
     role: "Researcher",
     bio: "Fun fact: I can play 3 different instruments. 😭",
     photo: "/images/team/Lael.jpeg",
-    photoClassName: "scale-125 group-hover:scale-[1.4]",
+    photoClassName: "scale-150 object-[50%_71%] group-hover:scale-[1.65]",
   },
 ];
 
